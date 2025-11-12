@@ -1,33 +1,30 @@
-#include <stdio.h>
+ï»¿#include <stdio.h>
 
-long long power(int base, int exponent) 
+long long power(int base, int exponent)
 {
+    // âœ… çµ‚æ­¢æ¢ä»¶ä¸€ï¼š0 æ¬¡æ–¹ = 1
+    if (exponent == 0)
+        return 1;
 
-    // 1. ¡i²×¤î±ø¥ó / °òÂ¦®×¨Ò¡j(Base Case)
-    // ·í exponent µ¥©ó 1 ®É¡A»¼°j²×¤î¨Ãªğ¦^ base^1 = base¡C
-    if (exponent == 1) 
-    {
+    // âœ… çµ‚æ­¢æ¢ä»¶äºŒï¼š1 æ¬¡æ–¹ = base
+    if (exponent == 1)
         return (long long)base;
-    }
 
-    // 2. ¡i»¼°j¨BÆJ¡j(Recursion Step)
-    // ¨Ï¥ÎÃD¥Ø­n¨DªºÃö«Y¦¡¡G base^exponent = base * base^(exponent - 1)
-    // ©I¥s power ¨ç¼Æ­pºâ exponent - 1 ªºµ²ªG¡AµM«á­¼¥H base¡C
+    // âœ… éè¿´æ­¥é©Ÿ
     return (long long)base * power(base, exponent - 1);
 }
 
-
-// -----------------------------------------------------------
-// ´ú¸Õ½d¨Ò
-// -----------------------------------------------------------
-int main() 
+int main()
 {
-    printf("--- 5.34: »¼°j¨D¾­´ú¸Õ ---\n");
+    printf("--- 5.34: éè¿´æ±‚å†ªæ¸¬è©¦ ---\n");
 
     int base1 = 3;
     int exp1 = 4;
-    printf("power(%d, %d) = %lld \n", base1, exp1, power(base1, exp1));
+    printf("power(%d, %d) = %lld\n", base1, exp1, power(base1, exp1));
 
+    int base2 = 5;
+    int exp2 = 0;
+    printf("power(%d, %d) = %lld\n", base2, exp2, power(base2, exp2));
 
     return 0;
 }
